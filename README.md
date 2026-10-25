@@ -9,10 +9,10 @@
 ![Главный экран](docs/konspekt/img/0_home.png)
 
 ## Скачать
-- **[Уборщик-Setup-1.0.0.exe](https://github.com/soseregasarychev-dotcom/cleaner/releases/latest)** —
+- **[Уборщик-Setup-1.0.0.exe](https://github.com/soseregasarychev-dotcom/cleaner/releases/download/v1.0.0/Uborshchik-Setup-1.0.0.exe)** (31 МБ) —
   установщик для Windows 10/11 (64-бит). Запустить → в синем окне SmartScreen
   «Подробнее» → «Выполнить в любом случае» → «Далее» → «Готово». Права администратора не нужны.
-- **[Конспект «Чистый рабочий стол»](docs/konspekt/Чистый%20рабочий%20стол%20—%20конспект.pdf)** (PDF, 6 стр.) —
+- **[Конспект «Чистый рабочий стол»](https://github.com/soseregasarychev-dotcom/cleaner/releases/download/v1.0.0/Chistyj-rabochij-stol-konspekt.pdf)** (PDF, 6 стр.) —
   петля проектировщика, установка, что умеет программа и как выйти из петли.
 
 Первая уборка всегда идёт по смете: без вашего «Согласовать снос» ничего не удаляется.
