@@ -28,3 +28,13 @@ powershell -ExecutionPolicy Bypass -File scripts\build.ps1
 .\.venv\Scripts\python.exe -m uborshchik --dry-run   # посмотреть план, ничего не меняя
 .\.venv\Scripts\python.exe -m uborshchik             # запустить окно из исходников
 ```
+
+## Установщик (передать другу)
+```powershell
+winget install JRSoftware.InnoSetup                      # один раз
+powershell -ExecutionPolicy Bypass -File scripts\installer.ps1
+```
+Получится `dist\Уборщик-Setup-<версия>.exe` (~35 МБ): ставится без прав администратора
+в `%LOCALAPPDATA%\Programs\Uborshchik`, ярлык в «Пуск», удаляется через «Параметры → Приложения»
+(вместе с автозапуском и настройками; архив на рабочем столе остаётся). Подписи нет — при первом
+запуске Windows SmartScreen попросит «Подробнее → Выполнить в любом случае».

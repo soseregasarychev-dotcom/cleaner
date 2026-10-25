@@ -6,3 +6,10 @@ build/
 dist/
 *.spec
 assets/icon.ico
+assets/*.bmp
+# Конспект: сгенерированное (render.py скилла alpha-konspekt кладёт само)
+docs/konspekt/preview/
+docs/konspekt/fonts/
+docs/konspekt/konspekt.css
+docs/konspekt/logo.png
+docs/konspekt/konspekt.html

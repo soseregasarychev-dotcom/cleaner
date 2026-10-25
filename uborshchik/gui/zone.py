@@ -8,6 +8,7 @@ from PySide6.QtCore import QPoint, QRect, QRectF, Qt, QTimer, Signal
 from PySide6.QtGui import QColor, QGuiApplication, QPainter, QPainterPath, QPen
 from PySide6.QtWidgets import QWidget
 
+from .. import desktop_icons, phrases
 from . import theme
 from .screens import logical_to_phys, zone_to_logical
 
@@ -19,18 +20,36 @@ _user32.SetWindowPos.argtypes = [
     ctypes.c_void_p, ctypes.c_void_p, ctypes.c_int, ctypes.c_int,
     ctypes.c_int, ctypes.c_int, ctypes.c_uint,
 ]
+_user32.GetWindowLongPtrW.argtypes = [ctypes.c_void_p, ctypes.c_int]
+_user32.GetWindowLongPtrW.restype = ctypes.c_void_p
+_user32.GetWindow.argtypes = [ctypes.c_void_p, ctypes.c_uint]
+_user32.GetWindow.restype = ctypes.c_void_p
+_user32.GetParent.argtypes = [ctypes.c_void_p]
+_user32.GetParent.restype = ctypes.c_void_p
 GWLP_HWNDPARENT = -8
+GW_HWNDPREV = 3
 HWND_BOTTOM = ctypes.c_void_p(1)
 SWP_NOSIZE, SWP_NOMOVE, SWP_NOACTIVATE = 0x1, 0x2, 0x10
 
-from .. import phrases
+
+def desktop_host() -> int | None:
+    """Окно верхнего уровня, в котором сейчас значки рабочего стола (Progman или WorkerW)."""
+    try:
+        lv = desktop_icons.find_desktop_listview()
+        defview = _user32.GetParent(ctypes.c_void_p(lv))
+        host = _user32.GetParent(ctypes.c_void_p(defview)) if defview else None
+        if host:
+            return host
+    except desktop_icons.DesktopIconsError:
+        pass
+    return _user32.FindWindowW("Progman", None)
 
 
 class ZoneOverlay(QWidget):
     """Полупрозрачная рамка поверх рабочего стола.
 
-    Клики проходят насквозь, окно не берёт фокус, живёт в самом низу
-    и принадлежит рабочему столу (Progman) — поэтому не пропадает по Win+D.
+    Клики проходят насквозь, окно не берёт фокус и принадлежит окну со значками
+    рабочего стола — поэтому стоит прямо над ними и не пропадает по Win+D.
     """
 
     def __init__(self):
@@ -63,18 +82,30 @@ class ZoneOverlay(QWidget):
         self.update()
 
     def _attach_to_desktop(self) -> None:
-        hwnd = ctypes.c_void_p(int(self.winId()))
-        progman = _user32.FindWindowW("Progman", None)
-        if progman:
-            _user32.SetWindowLongPtrW(hwnd, GWLP_HWNDPARENT, ctypes.c_void_p(progman))
         self._to_bottom()
 
     def _to_bottom(self) -> None:
-        if self.isVisible():
-            _user32.SetWindowPos(
-                ctypes.c_void_p(int(self.winId())), HWND_BOTTOM, 0, 0, 0, 0,
-                SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE,
-            )
+        """Держать рамку прямо над окном, в котором сейчас живут значки рабочего стола.
+
+        Проводник переносит значки из Progman в WorkerW (после «Свернуть все окна»,
+        слайд-шоу обоев и т. п.) и по Win+D поднимает это окно наверх. Окно-владелец
+        всегда тянет за собой своё «дочернее» — поэтому владельцем делаем именно хозяина
+        значков и проверяем его раз в 3 секунды.
+        """
+        if not self.isVisible():
+            return
+        hwnd = ctypes.c_void_p(int(self.winId()))
+        host = desktop_host()
+        if host and _user32.GetWindowLongPtrW(hwnd, GWLP_HWNDPARENT) != host:
+            _user32.SetWindowLongPtrW(hwnd, GWLP_HWNDPARENT, ctypes.c_void_p(host))
+        above = _user32.GetWindow(ctypes.c_void_p(host), GW_HWNDPREV) if host else None
+        if above and above != hwnd.value:
+            # Встать сразу над хозяином значков (под тем, кто был над ним)
+            _user32.SetWindowPos(hwnd, ctypes.c_void_p(above), 0, 0, 0, 0,
+                                 SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE)
+        elif not host:
+            _user32.SetWindowPos(hwnd, HWND_BOTTOM, 0, 0, 0, 0,
+                                 SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE)
 
     def paintEvent(self, _e) -> None:
         p = QPainter(self)

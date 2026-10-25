@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Чистый рабочий стол — конспект</title>
+<link rel="stylesheet" href="konspekt.css">
+<style>
+  .loop { max-width: 410pt; margin: 0 auto; }
+  .shot-w { margin-top: 10pt; }
+  .figs.mid { align-items: start; }
+  .broken { width: 150pt; }
+  .tbl td:first-child { font-weight: 600; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<section class="page cover">
+  <img class="mark" src="logo.png" alt="">
+  <h1>Чистый рабочий стол</h1>
+  <div class="subtitle">Конспект проектировщика: как выйти из петли хаоса</div>
+  <div class="meta">NEPROEKT · Навыки · октябрь 2026<br>Программа «Уборщик» 1.0</div>
+
+  <div class="cover-grid">
+    <div class="side">
+      <div class="callout"><h3>Склад</h3>
+        <p><b>Всё со стола</b> уезжает в архив с датой и ждёт там 90 дней.</p>
+        <p>Передумал — забрал. Не вспомнил — снесём.</p></div>
+      <div class="callout"><h3>Охранная зона</h3>
+        <p><b>Что в рамке</b> — объект культурного наследия.</p>
+        <p>Бригада туда не заходит.</p></div>
+    </div>
+    <div class="hero">
+      <svg viewBox="0 0 190 240" fill="none" stroke="#000" stroke-width="1.2" stroke-linejoin="round">
+        <!-- монитор -->
+        <rect x="8" y="14" width="174" height="122" rx="6"/>
+        <path d="M82 136l-5 24h36l-5-24M62 160h66"/>
+        <!-- хаос слева: значки вкривь и вкось -->
+        <g stroke-width="1">
+          <rect x="20" y="26" width="11" height="13" transform="rotate(-12 25 32)"/>
+          <rect x="38" y="30" width="11" height="13" transform="rotate(9 43 36)"/>
+          <rect x="58" y="24" width="11" height="13" transform="rotate(-4 63 30)"/>
+          <rect x="24" y="52" width="11" height="13" transform="rotate(15 29 58)"/>
+          <rect x="44" y="56" width="11" height="13" transform="rotate(-18 49 62)"/>
+          <rect x="66" y="50" width="11" height="13" transform="rotate(6 71 56)"/>
+          <rect x="86" y="34" width="11" height="13" transform="rotate(-9 91 40)"/>
+          <rect x="18" y="80" width="11" height="13" transform="rotate(7 23 86)"/>
+          <rect x="40" y="84" width="11" height="13" transform="rotate(-14 45 90)"/>
+          <rect x="62" y="78" width="11" height="13" transform="rotate(20 67 84)"/>
+          <rect x="84" y="70" width="11" height="13" transform="rotate(-5 89 76)"/>
+          <rect x="26" y="106" width="11" height="13" transform="rotate(-20 31 112)"/>
+          <rect x="52" y="108" width="11" height="13" transform="rotate(11 57 114)"/>
+          <rect x="80" y="100" width="11" height="13" transform="rotate(-8 85 106)"/>
+          <rect x="102" y="88" width="11" height="13" transform="rotate(16 107 94)"/>
+        </g>
+        <!-- охранная зона справа: ровно -->
+        <rect x="126" y="22" width="48" height="106" rx="6" stroke="#00d958" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <g stroke-width="1">
+          <rect x="138" y="32" width="11" height="13"/><rect x="155" y="32" width="11" height="13"/>
+          <rect x="138" y="56" width="11" height="13"/>
+        </g>
+        <!-- стрелка: хаос уезжает на склад -->
+        <path d="M60 172v26" stroke="#00d958" stroke-width="2"/>
+        <path d="M54 192l6 7 6-7" stroke="#00d958" stroke-width="2"/>
+        <!-- склад -->
+        <path d="M34 206h52v26H34zM30 206l30-10 30 10" />
+        <path d="M46 219h28" stroke-width="1"/>
+        <text x="96" y="223" font-family="Inter" font-size="8" fill="#000" stroke="none">Архив · 90 дней</text>
+      </svg>
+    </div>
+    <div class="side">
+      <div class="callout center"><h3>Строительный мусор</h3>
+        <p><b>TEMP, корзина, .bak и .dwl</b> — вывозятся на полигон насовсем.</p></div>
+      <div class="callout center"><h3>Облако</h3>
+        <p><b>Рабочие файлы</b> живут в «Моём диске». Стол — только стройплощадка.</p></div>
+    </div>
+  </div>
+  <div class="statement big">Чистый рабочий стол — чистая совесть и хорошие проекты</div>
+</section>
+
+<!-- 2. Вводная и петля -->
+<section class="page">
+  <div class="section">
+    <div class="kicker"><span class="n">01</span><span class="t">Вводная</span></div>
+    <h1>Проект начинается со стола,<br>а не с задания на проектирование</h1>
+    <p class="lead">Стол в завалах — как стройплощадка после сдачи: найти нужный DWG сложнее, чем согласовать перепланировку. Порядок на столе — порядок в голове, а значит, и в чертежах.</p>
+  </div>
+
+  <div class="section">
+    <div class="kicker"><span class="n">02</span><span class="t">Петля проектировщика</span></div>
+    <h1>Настроил — захламил — снёс.<br>И так по кругу</h1>
+    <p class="lead">Раскладывать каждый файл по папкам утомительно: когда горят сроки, на это нет ни минуты. Поэтому рабочий стол живёт по циклу, который знает каждый ГИП.</p>
+    <div class="loop">{{LOOP}}</div>
+    <p class="statement">Петлю не порвать силой воли — дисциплина сдаётся на первой же срочной задаче. Нужна автоматика.</p>
+  </div>
+  <div class="footer"><span>Чистый рабочий стол<span class="sep">|</span>Конспект</span><span>2</span></div>
+</section>
+
+<!-- 3. Установка -->
+<section class="page">
+  <div class="section">
+    <div class="kicker"><span class="n">03</span><span class="t">Уборщик · монтаж</span></div>
+    <h1>Установка: запустить<br>и со всем согласиться</h1>
+    <p class="lead">Уборщик — бригада, которая сама вывозит хлам со стола. Ставится за минуту, без прав администратора и без Python.</p>
+    <div class="steps">
+      <div class="n">1</div><div class="h">Получить файл</div><div class="d"><b>Уборщик-Setup-1.0.0.exe</b>, 31 МБ — в Telegram или ссылкой с Яндекс Диска.</div>
+      <div class="n">2</div><div class="h">Пройти SmartScreen</div><div class="d">Синее окно «Windows защитил ваш компьютер» → <b>«Подробнее»</b> → <b>«Выполнить в любом случае»</b>. Это не вирус, это прораб без печати.</div>
+      <div class="n">3</div><div class="h">Всё разрешить</div><div class="d">«Далее» → «Готово». Программа сама встанет в «Пуск» и в автозапуск.</div>
+      <div class="n">4</div><div class="h">Найти в трее</div><div class="d">Значок с метлой у часов. Окно можно закрыть — бригада остаётся на посту.</div>
+      <div class="n">5</div><div class="h">Первая уборка — по смете</div><div class="d">«Вызвать бригаду» → список: что уедет на склад, что на полигон. Лишнее — снять галочку, остальное — <b>«Согласовать снос»</b>.</div>
+    </div>
+    <figure class="shot-w">
+      <img class="shot" src="img/0_home.png" alt="">
+      <figcaption>Прорабская — главный экран: сколько хлама накопилось и когда приедет бригада.</figcaption>
+    </figure>
+    <p class="note">Удалить: «Параметры → Приложения → Уборщик». Склад на рабочем столе остаётся — это ваши файлы.</p>
+  </div>
+  <div class="footer"><span>Чистый рабочий стол<span class="sep">|</span>Конспект</span><span>3</span></div>
+</section>
+
+<!-- 4. Функционал -->
+<section class="page">
+  <div class="section">
+    <div class="kicker"><span class="n">04</span><span class="t">Уборщик · что умеет</span></div>
+    <h1>Что вывозит бригада<br>и куда</h1>
+    <p class="lead">Нужное едет на склад с датой и ждёт <b>90 дней</b>. Мусор — сразу на полигон. Облака не трогаются никогда.</p>
+    <table class="tbl">
+      <tr><th>Объект</th><th>Что делает</th><th>Срок</th></tr>
+      <tr><td>Рабочий стол</td><td>Всё, кроме охранной зоны и исключений, — в <b>Архив\2026-10-25</b></td><td>90 дней, за 7 дней предупредит</td></tr>
+      <tr><td>Загрузки</td><td>Туда же, в подпапку «Загрузки»</td><td>90 дней</td></tr>
+      <tr><td>TEMP</td><td>Временные файлы программ — насовсем (у владельца было <b>155 ГБ</b>)</td><td>старше 7 дней</td></tr>
+      <tr><td>Корзина</td><td>Чистится насовсем</td><td>дольше 30 дней</td></tr>
+      <tr><td>Мусор САПР</td><td>.bak, .dwl, .sv$, .pcp, бэкапы .0001.rvt — насовсем</td><td>сразу</td></tr>
+      <tr><td>Облака</td><td>«Мой диск», Яндекс Диск, OneDrive — <b>не трогаются никогда</b>, даже папки, внутри которых они лежат</td><td>—</td></tr>
+    </table>
+    <div class="cols mt" style="--n:3">
+      <div><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 2.5"><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+        <h4>Охранная зона</h4><p>Обвести мышью угол стола — всё, что в рамке, не трогается. Рамка видна всегда, клики проходят сквозь неё.</p></div>
+      <div><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 3"/></svg></div>
+        <h4>По графику</h4><p>Раз в <b>10 дней</b> в 21:00, за минуту спросит: «Перекур на час?». Комп был выключен — догонит через 5 минут после включения.</p></div>
+      <div><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></div>
+        <h4>Техника безопасности</h4><p>Открытые чертежи не трогает, файлы не перезаписывает, свежие (моложе часа) при автоуборке не берёт.</p></div>
+    </div>
+    <div class="figs mid" style="--n:2">
+      <figure><img class="shot" src="img/1_protect.png" alt=""><figcaption>Охранные зоны: рамка на столе и исключения — перетаскиванием.</figcaption></figure>
+      <figure><img class="shot" src="img/7_countdown.png" alt=""><figcaption>Прораб стучится за минуту до автоуборки.</figcaption></figure>
+    </div>
+  </div>
+  <div class="footer"><span>Чистый рабочий стол<span class="sep">|</span>Конспект</span><span>4</span></div>
+</section>
+
+<!-- 5. Выход из петли -->
+<section class="page">
+  <div class="section">
+    <div class="kicker"><span class="n">05</span><span class="t">Выход из петли</span></div>
+    <div class="side-fig" style="grid-template-columns: 1fr 150pt; margin-top: 0">
+      <div>
+        <h1>Облако — на стол ярлыками,<br>мусор — Уборщику</h1>
+        <p class="lead">Рабочие файлы живут в облаке, на столе — только двери к ним. Всё остальное можно смело бросать на стол.</p>
+      </div>
+      <svg class="broken" viewBox="0 0 150 120" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round">
+        <path d="M100 30A40 40 0 1 0 100 90"/>
+        <path d="M93 22l8 8-11 3"/>
+        <path d="M100 90C112 80 118 70 140 60M131 53l9 7-10 6" stroke="#00d958" stroke-width="2.4"/>
+      </svg>
+    </div>
+    <div class="steps">
+      <div class="n">1</div><div class="h">Ярлыки облака на стол</div><div class="d">В «Моём диске» — правый клик по папкам «Проекты», «База» → <b>«Создать ярлык»</b> → перетащить на стол.</div>
+      <div class="n">2</div><div class="h">Вынести программы</div><div class="d">Revit, AutoCAD, ЛИРА — в «Пуск» и на панель задач (правый клик → «Закрепить»). Со стола долой.</div>
+      <div class="n">3</div><div class="h">Нанести охранную зону</div><div class="d">«Охранные зоны» → «Нанести охранную зону», обвести угол и поставить туда ярлыки облака.</div>
+      <div class="n">4</div><div class="h">Мусорить спокойно</div><div class="d">Сохраняйте на стол что угодно: раз в 10 дней бригада вывезет всё на склад, через 90 дней — на полигон.</div>
+    </div>
+    <figure class="shot-w">
+      <img class="shot" src="img/desktop.png" alt="">
+      <figcaption>Стол владельца после выхода из петли: справа — охранная зона с облаком и моделями, слева — программы. Остальное увезёт бригада.</figcaption>
+    </figure>
+    <p class="statement big">Петля разорвана, цикл прерван. Добро пожаловать в эру ИИ: проектировщик проектирует, а убирает робот.</p>
+    <p class="note">Уборщика от первой строчки кода до установщика написал ИИ за один день — по разговору с проектировщиком.</p>
+  </div>
+  <div class="footer"><span>Чистый рабочий стол<span class="sep">|</span>Конспект</span><span>5</span></div>
+</section>
+
+<!-- 6. Определения и источники -->
+<section class="page">
+  <div class="split">
+    <h1>Определения</h1>
+    <div class="defs">
+      <p><b>Склад (архив).</b> Папка «Рабочий стол\Архив\ГГГГ-ММ-ДД»: всё, что убрано со стола и из Загрузок. Через 90 дней удаляется насовсем.</p>
+      <p><b>Охранная зона.</b> Прямоугольник на рабочем столе; всё, чьи значки стоят внутри, не убирается. Видна пунктирной зелёной рамкой.</p>
+      <p><b>Исключения.</b> Имена файлов и папок или маски (например, <b>*.lnk</b>), которые не трогаются, где бы на столе ни лежали. Добавляются перетаскиванием.</p>
+      <p><b>Строительный мусор.</b> Временные файлы TEMP старше 7 дней, корзина старше 30 дней, служебные файлы САПР (.bak, .dwl, .sv$, .pcp, бэкапы .rvt).</p>
+      <p><b>Облако.</b> «Мой диск» (Google Диск) — единственное место, где живут рабочие файлы. Уборщик облака не трогает.</p>
+      <p><b>Петля проектировщика.</b> Цикл «настроил — пользуюсь — аврал — хаос — места нет — снёс всё — настроил заново».</p>
+    </div>
+  </div>
+  <div class="split">
+    <h1>Источники</h1>
+    <div class="notes"><ol>
+      <li>Программа «Уборщик» 1.0 — github.com/soseregasarychev-dotcom/cleaner (приватный репозиторий).</li>
+      <li>Установщик «Уборщик-Setup-1.0.0.exe».</li>
+      <li>Наблюдения за рабочим столом проектировщика, октябрь 2026: 942 объекта, 155 ГБ во временных файлах.</li>
+      <li>Схемы — пояснительные, без масштаба.</li>
+    </ol></div>
+  </div>
+  <div class="footer"><span>Чистый рабочий стол<span class="sep">|</span>Конспект</span><span>6</span></div>
+</section>
+
+</body>
+</html>
